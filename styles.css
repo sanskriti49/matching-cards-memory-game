@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background-color: #6563ff;
+}
+.container {
+	background-color: #f8f8f8;
+	width: 90%;
+	max-width: 630px;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.title {
+	font-size: 3.5rem;
+	font-family: "Lobster", cursive;
+	color: #5654bc;
+	font-weight: 700;
+}
+.desc {
+	font-size: 19px;
+	font-weight: 500;
+	margin-top: 10px;
+}
+
+.cards {
+	margin-top: 35px;
+	display: grid;
+	grid-template-columns: repeat(4, 0.5fr);
+	gap: 20px;
+}
+.card,
+.view {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.cards {
+	padding-right: 10px;
+	padding-left: 10px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.cards .card {
+	cursor: pointer;
+	list-style: none;
+	user-select: none;
+	width: 130px;
+    height: 130px;
+
+	box-shadow: 0 1px 12px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+
+	transition: transform 0.6s ease;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+.cards .card .view {
+	width: 100%;
+	height: 100%;
+	user-select: none;
+	pointer-events: none;
+	position: absolute;
+	background: #fff;
+	border-radius: 7px;
+	backface-visibility: hidden;
+	transition: transform 0.25s linear;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card .front-view img {
+	width: 33px;
+    
+}
+.card .back-view {
+	transform: rotateY(-180deg);
+}
+.card .back-view img {
+	max-width: 65px;
+}
+.card.flip .front-view {
+	transform: rotateY(180deg);
+}
+.card.flip .back-view {
+	transform: rotateY(0);
+}
+
+.flips {
+	color: #3d3c3c;
+}
+
+.card.shake {
+	animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	20% {
+		transform: translateX(-13px);
+	}
+	40% {
+		transform: translateX(13px);
+	}
+	60% {
+		transform: translateX(-8px);
+	}
+	80% {
+		transform: translateX(8px);
+	}
+}
+
+.timer {
+	position: relative;
+	left: 5%;
+	width: 90%;
+	margin-top: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 1.5rem;
+	
+}
+.timer .btn {
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	background: linear-gradient(135deg, #ffbc00, #ff0058);
+	color: #fff;
+	transition: all 0.4s ease;
+	cursor: pointer;
+	padding: 5px;
+	font-size: 22px;
+	padding: 5px 11px;
+}
+.timer .btn:hover {
+	letter-spacing: 1px;
+	transform: scale(1.1);
+}
+
+.alert {
+	display: none;
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: radial-gradient(circle, #ffcc00, #ff9900);
+	color: white;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+	font-family: 'Comic Sans MS', sans-serif;
+	z-index: 1000;
+	animation: showAlert 0.5s ease-in-out;
+	font-size: 1.2rem;
+}
+@keyframes showAlert {
+	0% { opacity: 0; transform: translateY(-20%); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
+    .container {
+        width: 70%;
+    }
+    .title {
+        font-size: 2.5rem; 
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .title {
+        font-size: 2rem; 
+    }
+}
+@media (max-width: 650px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 10px; 
+    }
+	.title {
+        font-size: 2rem; 
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 15px;
+    }
+    .cards .card {
+		width: 90px;
+		height: 90px;
+        max-width: 100%; 
+        margin: auto; 
+    }
+	.timer{
+		font-size: 1.2rem;
+	}
+	.timer .btn {
+		font-size: 17px;
+	}
+}
