@@ -85,13 +85,18 @@ function flipCard() {
 
 function setAlert(msg) {
     if (msg === "WON!") {
+        clearInterval(timerId); // Ensure timer is cleared
+        timerId = null; 
         desc.classList.add('show', 'success');
         $(desc).hide().html(`
             <p>Wohooo! 🎉 You matched cards before time! <br>
             You got only <strong>${missedMatches}</strong> misses! </p>
         `).fadeIn(500);
         jsConfetti.addConfetti();
-    } else if (msg === "Time's up!") {
+    } 
+    else if (msg === "Time's up!") {
+        clearInterval(timerId); // Ensure timer is cleared
+        timerId = null; 
         desc.classList.add('show', 'timeout');
         $(desc).hide().html(`
             <p>Time's up! ⏳ You lose! <br>
@@ -111,6 +116,7 @@ function checkMatch() {
         if (matchedCard == 6 && timeLeft > 0) {
             setAlert("WON!");
             clearInterval(timerId);
+            timerId = null;
             return;  // Exit function
         }
         disableClick();
