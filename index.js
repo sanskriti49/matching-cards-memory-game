@@ -110,7 +110,8 @@ function checkMatch() {
         playSound("success");
         if (matchedCard == 6 && timeLeft > 0) {
             setAlert("WON!");
-            return clearInterval(timerId);
+            clearInterval(timerId);
+            return;  // Exit function
         }
         disableClick();
     } 
