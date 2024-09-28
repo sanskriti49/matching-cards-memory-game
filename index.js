@@ -171,9 +171,12 @@ $(".btn").click(function () {
 function resetGame() {
     flipCount = 0;
     timeLeft = maxTime;
+    matchedCard = 0; 
+    missedMatches = 0; 
     isPlaying = false;
     clearInterval(timerId);
     timerId = null;
+    
     $(".time b").text(timeLeft + "s");
     $(".flips b").text(flipCount);
 
