@@ -249,3 +249,38 @@ body {
 		font-size: 17px;
 	}
 }
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+	.container {
+        width: 40%;
+		padding: 11px;
+    }
+    .cards {
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 10px;
+		margin-top: 12px;
+    }
+    .cards .card {
+        width: 75px;
+        height: 70px;
+    }
+	.card .front-view img {
+		width: 15px;
+		
+	}
+	.card .back-view img {
+		max-width: 38px;
+	}
+    .title {
+        font-size: 2rem;
+    }
+	.desc{
+		font-size: 15px;
+	}
+    .timer {
+		margin-top: 20px;
+        font-size: 1.1rem;
+    }
+	.timer .btn{
+		font-size: 17px;
+	}
+}
